@@ -156,11 +156,12 @@
 
   .mono{
     width:44px;height:44px;border-radius:50%;flex-shrink:0;border:1px solid var(--gold);
-    display:flex;align-items:center;justify-content:center;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg);
     font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:16px;color:var(--gold-light);position:relative;
   }
   .mono::after{content:"";position:absolute;inset:-5px;border:1px solid var(--line);border-radius:50%;}
   .mono.sm{width:34px;height:34px;font-size:13px;}
+  .mono img{width:100%;height:100%;object-fit:contain;object-position:center;}
 
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease, transform .8s ease;}
   .reveal.in{opacity:1;transform:translateY(0);}
@@ -211,10 +212,10 @@
   .hero-frame::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px var(--line-strong);}
   .hero-badge{
     position:absolute;bottom:0;left:0;right:0;background:rgba(11,10,9,.72);backdrop-filter:blur(6px);
-    padding:16px 22px;display:flex;align-items:center;gap:14px;border-top:1px solid var(--line-strong);
+    padding:14px 22px;display:flex;align-items:center;justify-content:center;border-top:1px solid var(--line-strong);
   }
-  .hero-badge-text{font-size:12px;color:var(--muted);line-height:1.5;}
-  .hero-badge-text b{display:block;color:var(--cream);font-family:'Fraunces',serif;font-weight:500;font-size:16px;}
+  .hero-badge img{height:52px;width:auto;max-width:100%;}
+  .hero-logo{display:none;}
 
   .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);}
@@ -365,7 +366,9 @@
     .salon-grid{grid-template-columns:1fr;}
     .salon-copy{padding:48px 0 0 0 !important;}
     .hero{padding-top:126px;}
-    .hero-media{order:-1;}
+    .hero-logo{display:flex;justify-content:center;margin-top:34px;}
+    .hero-logo img{width:100%;max-width:180px;height:auto;}
+    .hero-badge img{height:38px;}
     .why{grid-template-columns:1fr;}
     .stats-grid{grid-template-columns:1fr;}
     .stat{border-left:none;border-top:1px solid var(--line);}
@@ -401,7 +404,7 @@
 <header id="siteHeader">
   <div class="wrap nav">
     <a href="#top" class="brand">
-      <div class="mono sm">MS</div>
+      <div class="mono sm"><img src="logo-badge.png" alt="Muzaffer Sayar Erkek Kuaförü Logo"></div>
       <span class="brand-text">Muzaffer Sayar<span>Erkek Kuaförü · Akhisar</span></span>
     </a>
     <div class="nav-links" id="navLinks">
@@ -436,10 +439,12 @@
         <div class="hero-frame">
           <img src="muzaffer.webp" alt="Muzaffer Sayar, Akhisar'daki erkek kuaförü salonunda gülümsüyor">
           <div class="hero-badge">
-            <div class="mono sm">MS</div>
-            <div class="hero-badge-text">Ustabaşı<b>Muzaffer Sayar</b></div>
+            <img src="logo-wide.png" alt="Muzaffer Sayar Erkek Kuaförü Logo">
           </div>
         </div>
+      </div>
+      <div class="hero-logo">
+        <img src="logo.png" alt="Muzaffer Sayar Erkek Kuaförü Logo">
       </div>
     </div>
   </section>
