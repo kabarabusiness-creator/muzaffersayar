@@ -361,6 +361,34 @@
 
   :focus-visible{outline:1px solid var(--gold);outline-offset:3px;}
 
+  .call-fab{
+    position:fixed;right:26px;bottom:26px;z-index:70;
+    display:flex;align-items:center;gap:10px;
+    background:var(--gold);color:#171310;text-decoration:none;
+    padding:15px 22px 15px 17px;border-radius:999px;
+    box-shadow:0 10px 30px rgba(0,0,0,.45);
+    font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .call-fab:hover{background:var(--gold-light);transform:translateY(-2px);}
+  .call-fab-icon-wrap{
+    position:relative;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .call-fab-icon-wrap svg{width:18px;height:18px;position:relative;z-index:2;}
+  .call-fab-ring{
+    position:absolute;inset:0;border-radius:50%;border:2px solid #171310;opacity:.55;
+    animation:call-pulse 2.2s ease-out infinite;
+  }
+  @keyframes call-pulse{
+    0%{transform:scale(.75);opacity:.55;}
+    70%{transform:scale(1.65);opacity:0;}
+    100%{transform:scale(1.65);opacity:0;}
+  }
+  @media (max-width:920px){
+    .call-fab{right:16px;bottom:16px;padding:14px;border-radius:50%;}
+    .call-fab-text{display:none;}
+  }
+
   @media (max-width:920px){
     .hero-grid,.loc-grid,.booking-grid{grid-template-columns:1fr;}
     .salon-grid{grid-template-columns:1fr;}
@@ -724,6 +752,15 @@
     </div>
   </div>
 </footer>
+
+<!-- TODO: gerçek telefon numarasıyla değiştirin -->
+<a href="tel:+905000000000" class="call-fab" aria-label="Hemen Ara">
+  <span class="call-fab-icon-wrap">
+    <span class="call-fab-ring"></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </span>
+  <span class="call-fab-text">Hemen Ara</span>
+</a>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
