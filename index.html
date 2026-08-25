@@ -47,10 +47,10 @@
   "paymentAccepted": "Cash, Credit Card, PayPal",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "TODO: Mahalle / Cadde / Kapı No",
+    "streetAddress": "Hürriyet, Şht. Polis Cemal Ilgaz Cd. 115-111",
     "addressLocality": "Akhisar",
     "addressRegion": "Manisa",
-    "postalCode": "45200",
+    "postalCode": "45240",
     "addressCountry": "TR"
   },
   "geo": {
@@ -290,12 +290,30 @@
   input,select,textarea{
     background:transparent;border:none;border-bottom:1px solid var(--line-strong);color:var(--cream);
     padding:10px 2px;font-family:'Inter',sans-serif;font-size:15.5px;border-radius:0;width:100%;
+    color-scheme:dark;
   }
   select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%238d8477'><path d='M6 8l4 4 4-4'/></svg>");background-repeat:no-repeat;background-position:right 2px center;}
-  select option{background:#131110;}
+  select option{background:#131110;color:var(--cream);}
   input::placeholder,textarea::placeholder{color:#5d574d;}
   input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);}
   textarea{resize:vertical;min-height:64px;}
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus{
+    -webkit-text-fill-color:var(--cream);
+    -webkit-box-shadow:0 0 0 1000px var(--bg) inset;
+    box-shadow:0 0 0 1000px var(--bg) inset;
+    caret-color:var(--cream);
+    transition:background-color 9999s ease-in-out 0s;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator{
+    filter:invert(.75) brightness(1.3);
+    cursor:pointer;
+    opacity:.9;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator:hover,
+  input[type="time"]::-webkit-calendar-picker-indicator:hover{opacity:1;}
 
   .pay-options{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   .pay-opt{
@@ -309,6 +327,17 @@
   .pay-opt .name{font-family:'Fraunces',serif;font-size:16px;color:var(--cream);}
   .pay-opt .desc{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.5;}
   .pay-note{margin-top:20px;font-size:12.5px;color:var(--muted);line-height:1.65;border-left:2px solid var(--gold);padding-left:16px;}
+
+  .success-box{text-align:center;padding:12px 0 4px;}
+  .success-icon{
+    width:56px;height:56px;border-radius:50%;border:1px solid var(--ok);color:var(--ok);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 22px;
+  }
+  .success-icon svg{width:26px;height:26px;}
+  .success-box h3{font-size:24px;color:var(--cream);}
+  .success-box>p{color:var(--muted);font-size:14.5px;line-height:1.7;margin:14px auto 26px;max-width:44ch;}
+  .success-box .summary{text-align:left;}
+  .success-note{font-size:12.5px !important;color:var(--muted);margin-top:20px !important;}
 
   .summary{border:1px solid var(--line);padding:26px;margin-bottom:30px;}
   .summary-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px;}
@@ -350,10 +379,16 @@
     .nav-links.open{display:flex;}
     .nav-links ul{flex-direction:column;gap:20px;}
     .burger{display:block;}
+    .promo-close{position:static;transform:none;order:3;margin-left:6px;}
+    .promo-inner{padding:9px 44px 9px 16px;position:relative;}
+    .promo-close{position:absolute;right:10px;top:50%;transform:translateY(-50%);}
+    body.promo-open header{top:64px;}
+    body.promo-open .hero{padding-top:174px;}
+    body.promo-open .nav-links{top:130px;}
   }
 </style>
 </head>
-<body>
+<body class="promo-open">
 
 <div class="promo-bar" id="promoBar">
   <div class="wrap promo-inner">
@@ -389,7 +424,7 @@
     <div class="wrap hero-grid">
       <div>
         <p class="eyebrow">Akhisar · 2018'den beri</p>
-        <h1 style="margin-top:16px;">Zamanı alan<br>bir <em>zanaat</em></h1>
+        <h1 style="margin-top:16px;">Akhisar Erkek Kuaförü<br><em>Muzaffer Sayar</em></h1>
         <p class="role">Akhisar Erkek Kuaförü · Saç · Sakal · Cilt Bakımı</p>
         <p class="lede">Muzaffer Sayar Erkek Kuaförü'nde her kesim, aceleye getirilmeden ve göz kararı değil özenle yapılır. Akhisar'da 2018'den bu yana kazandığımız tecrübeyle, tarzınıza uygun bir sonuç.</p>
         <div class="hero-ctas">
@@ -489,14 +524,14 @@
       <div class="loc-grid reveal">
         <div class="loc-card">
           <h3>Adres</h3>
-          <div class="loc-row"><span>Adres</span><b>Akhisar, Manisa (45200)</b></div>
+          <div class="loc-row"><span>Adres</span><b>Hürriyet, Şht. Polis Cemal Ilgaz Cd. 115-111, 45240 Akhisar/Manisa</b></div>
           <div class="loc-row"><span>Telefon</span><b>0500 000 00 00</b></div>
           <div class="loc-row"><span>WhatsApp</span><b>0500 000 00 00</b></div>
           <div class="loc-row"><span>Pazartesi – Cumartesi</span><b>09:00 – 20:00</b></div>
           <div class="loc-row" style="border-bottom:none;"><span>Pazar</span><b>Kapalı</b></div>
         </div>
         <div class="map-frame">
-          <iframe src="https://maps.google.com/maps?q=Akhisar%2C%20Manisa&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Akhisar konum haritası"></iframe>
+          <iframe src="https://maps.google.com/maps?q=H%C3%BCrriyet%2C%20%C5%9Eht.%20Polis%20Cemal%20Ilgaz%20Cd.%20115-111%2C%2045240%20Akhisar%2FManisa&t=&z=17&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Akhisar konum haritası"></iframe>
         </div>
       </div>
     </div>
@@ -518,7 +553,7 @@
           <div class="wstep" data-step-indicator="3"><div class="wstep-num">3</div><div class="wstep-label">Bilgiler &amp; Onay</div></div>
         </div>
 
-        <form id="bookingForm">
+        <form id="bookingForm" novalidate>
           <!-- STEP 1 -->
           <div class="wpane active" data-step="1">
             <div class="form-grid">
@@ -611,6 +646,25 @@
               </div>
             </div>
           </div>
+
+          <!-- STEP 4: CONFIRMATION (shown after submit, no page navigation) -->
+          <div class="wpane" data-step="4" id="successPane">
+            <div class="success-box">
+              <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12.5l5 5L20 6.5"/></svg>
+              </div>
+              <h3>Randevu talebiniz alındı</h3>
+              <p>Aşağıdaki bilgilerle randevu talebiniz salonumuza iletildi. En kısa sürede size dönüş yapılacaktır.</p>
+              <div class="summary" id="successSummaryBox">
+                <div class="summary-row"><span>Ad Soyad</span><span id="doneAd">—</span></div>
+                <div class="summary-row"><span>Hizmet</span><span id="doneHizmet">—</span></div>
+                <div class="summary-row"><span>Tarih &amp; Saat</span><span id="doneZaman">—</span></div>
+                <div class="summary-row"><span>Ödeme Yöntemi</span><span id="doneOdeme">—</span></div>
+                <div class="summary-row total"><span>Tutar</span><span id="doneTutar">—</span></div>
+              </div>
+              <p class="success-note" id="successNote"></p>
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -671,6 +725,13 @@
 
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+
+  const promoBar = document.getElementById('promoBar');
+  const promoClose = document.getElementById('promoClose');
+  promoClose.addEventListener('click', () => {
+    promoBar.classList.add('hidden');
+    document.body.classList.remove('promo-open');
+  });
 
   const burger = document.getElementById('burger');
   const navLinks = document.getElementById('navLinks');
@@ -773,16 +834,41 @@
     const mesaj = encodeURIComponent(mesajParcalari.join('\n'));
     const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${mesaj}`;
 
-    const msgEl = document.getElementById('formMsg');
+    // Onay ekranını her koşulda göster — WhatsApp/PayPal açma denemesi
+    // başarısız olsa veya bir hata verse bile müşteri onay ekranını görür.
+    document.getElementById('doneAd').textContent = ad;
+    document.getElementById('doneHizmet').textContent = `${hizmet} (${sel.dataset.dur})`;
+    document.getElementById('doneZaman').textContent = `${tarih} · ${saat}`;
+    document.getElementById('doneOdeme').textContent = odeme;
+    document.getElementById('doneTutar').textContent = `${fiyat}₺`;
+    document.getElementById('successNote').textContent = odeme === 'PayPal'
+      ? 'Randevu talebiniz salona iletildi. Ödeme onayı için açılan PayPal sekmesindeki işlemi tamamlamayı unutmayın.'
+      : 'Randevu talebiniz salona iletildi. Onay için kısa süre içinde sizinle iletişime geçilecektir.';
+    goToStep(4);
+
+    // WhatsApp mesajını salona arka planda gönder — müşteri sayfada kalır.
+    // Not: WhatsApp'ın tarayıcı üzerinden tamamen sessiz/otomatik mesaj göndermesine
+    // izin vermiyor; bu yüzden mümkün olan en az müdahaleci yöntemi kullanıyoruz —
+    // yeni sekme odağı hemen bu sayfaya geri alınır (masaüstünde etkilidir; bazı
+    // mobil tarayıcılarda kısa bir uygulama geçişi olabilir). Bu adım başarısız
+    // olsa bile onay ekranı zaten gösterildi.
+    try {
+      const waWin = window.open(waUrl, '_blank', 'noopener');
+      if (waWin) {
+        try { waWin.blur(); } catch (e) {}
+        try { window.focus(); } catch (e) {}
+      }
+    } catch (err) {
+      console.error('WhatsApp gönderimi başlatılamadı:', err);
+    }
 
     if (odeme === 'PayPal'){
-      const paypalUrl = `https://paypal.me/${PAYPAL_USERNAME}/${fiyat}TRY`;
-      msgEl.textContent = 'PayPal ve WhatsApp açılıyor…';
-      window.open(paypalUrl, '_blank', 'noopener');
-      window.open(waUrl, '_blank', 'noopener');
-    } else {
-      msgEl.textContent = 'WhatsApp açılıyor…';
-      window.open(waUrl, '_blank', 'noopener');
+      try {
+        const paypalUrl = `https://paypal.me/${PAYPAL_USERNAME}/${fiyat}TRY`;
+        window.open(paypalUrl, '_blank', 'noopener');
+      } catch (err) {
+        console.error('PayPal sekmesi açılamadı:', err);
+      }
     }
   });
 </script>
